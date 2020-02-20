@@ -24,7 +24,8 @@ class NewPassword extends Component {
         })
     }
     render() { 
-        return (<View style={{marginTop:90}}>
+        return (<View>
+                        
                     <Formik
                         initialValues = {this.state.initialValues}
                         onSubmit={values =>{
@@ -36,7 +37,9 @@ class NewPassword extends Component {
                                             <Text>Title</Text>
                                             <TextInput placeholder="Title" 
                                                         onChangeText={formikProps.handleChange('title')}/>
+                                        
                                         </View>
+
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Text>Link</Text>
                                             <TextInput placeholder="Link" 
