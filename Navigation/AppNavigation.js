@@ -30,8 +30,8 @@ import GeneratePassword from '../Components/GenerateNewComponent';
 //                                     })
 
 const AuthStack = createStackNavigator({
-                                        SignIn: {screen: Login},
-                                        SignUp: {screen: SignUp}
+                                        "Sign In": {screen: Login},
+                                        "Sign Up": {screen: SignUp}
                                         })
 
 

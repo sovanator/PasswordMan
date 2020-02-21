@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, Button} from 'react-native';
+import {Text, View, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import {Avatar} from 'react-native-elements'
-import { TextInput } from 'react-native-gesture-handler';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 // import AsyncStorage from '@react-native-community/async-storage';
 
 
@@ -26,27 +26,31 @@ class Login extends Component {
 
     render() { 
         return (
-            <View style={styles.container}>
-                <Avatar     style={styles.avatar}
-                            size="xlarge"
-                            rounded
-                            source={{
-                                uri:''
-                                }}
-                />
-                
-                <TextInput 
-                            secureTextEntry
-                            placeholder= "PIN" 
-                            style={styles.input}
-                            onChangeText={(pin)=>this.setState({pin})}
-                    />
-                 <Button title="Login"
-                            onPress={this.validatePin} />
-                <Button title="SignUp"
-                            onPress={()=>this.props.navigation.navigate('SignUp')} />
-              
+            <KeyboardAvoidingView behavior="padding" style={styles.container}>
+            <View >
+                        <Avatar     style={styles.avatar}
+                                    size="xlarge"
+                                    rounded
+                                    source={{
+                                        uri:''
+                                        }}
+                        />
+                        
+                        <TextInput 
+                                    secureTextEntry
+                                    placeholder= "PIN" 
+                                    style={styles.input}
+                                    onChangeText={(pin)=>this.setState({pin})}
+                            />
+                        
+                        <TouchableOpacity  onPress={this.validatePin}>
+                            <Text style={styles.texts}> Login</Text>
+                        </TouchableOpacity>   
+                        <TouchableOpacity   onPress={()=>this.props.navigation.navigate('Sign Up')}>
+                                <Text style={styles.texts}>Sign Up</Text>
+                        </TouchableOpacity>
             </View>
+            </KeyboardAvoidingView>
             )
         }
 }
@@ -58,7 +62,9 @@ const styles = StyleSheet.create({
     container:{
     flex:1,
     backgroundColor: '#3498db',
-    padding: 50
+    padding: 30,
+    alignItems:"center",
+    // justifyContent: "center"
     },   
     avatar:{height:200,
             width: 200,
@@ -68,8 +74,16 @@ const styles = StyleSheet.create({
     input:{
         paddingLeft: 20,
         height: 40,
+        width: 300,
+        textAlign:"center",
         backgroundColor:"white",
-        marginBottom: 20,
+        marginBottom: 10,
         paddingHorizontal: 10
+    },
+    texts:{
+        fontSize: 17,
+        width: 100,
+        alignItems:"center",
+        justifyContent: "center"
     }
 })

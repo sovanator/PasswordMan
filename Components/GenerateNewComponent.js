@@ -9,9 +9,59 @@ class GeneratePassword extends Component {
         this.state={ initialValues:{
             length:'',
             exclude:'',
+           
 
-        }}
+        },
+        password:''}
     }
+
+    generatePassword = ()=>{
+       const lengthPass = 10;
+
+       const  randomFunc =  {
+            lower: this.generateLowerCase,
+            upper: this.generateUpperCase,
+            number: this.generateNumber,
+            symbol: this.generateSymbol
+       }
+    
+
+        const keyArray = ['upper','number','symbol','lower']
+        let password = ''
+       for (let i=0; i<lengthPass; i++){
+            let keyLength = keyArray.length
+            let randomKeyIndex = Math.floor(Math.random()*keyLength)
+            let randomKey = keyArray[randomKeyIndex]
+            let randomString = randomFunc[randomKey]
+            password = password + randomString()
+        
+           
+       }    
+       
+
+        this.setState({password})
+        
+        
+    }
+
+    generateLowerCase = ()=>{
+        return String.fromCharCode(Math.floor(Math.random()*26)+97)
+    }
+
+    generateUpperCase = ()=>{
+        return String.fromCharCode(Math.floor(Math.random()*26)+65)
+    }
+
+    generateNumber = ()=>{
+        return String.fromCharCode(Math.floor(Math.random()*10)+48)
+    }
+
+    generateSymbol = ()=>{
+        const symbols = '!@#$%^&*()[]{}=<>/?.,;"`~|'
+        return symbols[Math.floor(Math.random()* symbols.length)]
+    }
+
+
     render() { 
         return (
                 <View style={{marginTop:90}}>
@@ -37,18 +87,16 @@ class GeneratePassword extends Component {
                                             onChangeText={formikProps.handleChange('exclude')}
                                         />
                                     </View>
-                                    <Button title="Generate" />
+                                    <Button title="Generate"
+                                            onPress={()=>this.generatePassword()} />
                                     <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                        <Text>Password</Text>
-                                        <TextInput
-                                            placeholder="Password"
-                                            
-                                        />
+                                        <Text>{this.state.password}</Text>
+                                        
                                     </View>
                                     <Button title='Save'
                                             onPress={formikProps.handleSubmit} />
                                     <Button title='Cancel'
-                                            />
+                                            onPress={()=>this.setState({password:''})}/>
 
                                 </>
                             )
