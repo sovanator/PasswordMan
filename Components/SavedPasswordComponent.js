@@ -13,6 +13,21 @@ class SavedPassword extends Component {
 
     }
 
+    // static navigationOptions = {
+       
+    //     headerRight: () => (
+    //       <Button
+    //         onPress={() => this.props.navigation.navigate('New Password')}
+    //         title="Log out"
+    //         color="#fff"
+    //       />
+    //     ),
+    //   };
+
+    handleSavedPassword = ()=>{
+        console.log('clicked')
+    }
+
      renderList=({item})=> {
         return (
             <ListItem
@@ -20,6 +35,7 @@ class SavedPassword extends Component {
                 title={item.title}
                 subtitle={item.website}
                 bottomDivider
+                onPress={()=>this.props.navigation.navigate('Password Details',item)}
                 chevron
             />
 

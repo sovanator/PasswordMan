@@ -60,7 +60,7 @@ class NewPassword extends Component {
                                             </TouchableOpacity>
                                         </View>
                                         <Button title="Create" onPress={formikProps.handleSubmit} />
-                                        <Button title="Cancle" color="red" />
+                                        <Button title="Cancle" color="red" onPress={()=>this.props.navigation.navigate('Saved Password')}/>
                             </>
 
                         )

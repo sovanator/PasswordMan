@@ -96,7 +96,7 @@ class GeneratePassword extends Component {
                                     <Button title='Save'
                                             onPress={formikProps.handleSubmit} />
                                     <Button title='Cancel'
-                                            onPress={()=>this.setState({password:''})}/>
+                                            onPress={()=>this.props.navigation.navigate('Saved Password')}/>
 
                                 </>
                             )
