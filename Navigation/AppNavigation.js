@@ -30,7 +30,7 @@ const SavedNavigation = createStackNavigator({
 const TabNavigator = createBottomTabNavigator({
     "Saved Password":{screen:SavedNavigation},
     "New Password":{screen:NewPassword},
-    "Generate Password":{screen:GeneratePassword},
+    "Generate Password":{screen:GeneratePassword}
     
 
 })

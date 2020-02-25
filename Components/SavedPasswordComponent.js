@@ -1,29 +1,10 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Button, SafeAreaView, FlatList, TouchableOpacity} from 'react-native';
 import {ListItem} from 'react-native-elements'
-import {SAVEDPASSWORD} from '../Data/SavedPassword'
+import {connect} from 'react-redux'
 
 class SavedPassword extends Component {
-    constructor(props){
-        super(props)  
-            this.state={
-                SAVEDPASSWORD: SAVEDPASSWORD
-            }
-        
-
-    }
-
-    // static navigationOptions = {
-       
-    //     headerRight: () => (
-    //       <Button
-    //         onPress={() => this.props.navigation.navigate('New Password')}
-    //         title="Log out"
-    //         color="#fff"
-    //       />
-    //     ),
-    //   };
-
+  
     handleSavedPassword = ()=>{
         console.log('clicked')
     }
@@ -42,10 +23,13 @@ class SavedPassword extends Component {
         )
     }
     render() { 
+        
+        const {savedPasswords} = this.props
+        
         return (
             <SafeAreaView style={styles.mainContainer}>
                 <FlatList 
-                    data={this.state.SAVEDPASSWORD}
+                    data={savedPasswords}
                     renderItem = {this.renderList}
                     keyExtractor={item=>item.key}
                 />    
@@ -81,4 +65,12 @@ const styles= StyleSheet.create({
       },
   
 })
-export default SavedPassword;
+
+//what data you want to grab from redux goes here
+const mapStateToProps = (state)=>{
+    return {
+        savedPasswords: state.savedPasswords
+    }
+
+}
+export default connect(mapStateToProps)(SavedPassword);

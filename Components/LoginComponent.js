@@ -27,7 +27,7 @@ class Login extends Component {
     render() { 
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
-            <View >
+            {/* <View > */}
                         <Avatar     style={styles.avatar}
                                     size="xlarge"
                                     rounded
@@ -49,7 +49,7 @@ class Login extends Component {
                         <TouchableOpacity   onPress={()=>this.props.navigation.navigate('Sign Up')}>
                                 <Text style={styles.texts}>Sign Up</Text>
                         </TouchableOpacity>
-            </View>
+            {/* </View> */}
             </KeyboardAvoidingView>
             )
         }
@@ -66,8 +66,9 @@ const styles = StyleSheet.create({
     alignItems:"center",
     // justifyContent: "center"
     },   
-    avatar:{height:200,
-            width: 200,
+    avatar:{
+        height:'20%',
+        width: '20%',
         marginHorizontal: 70,
         marginBottom: 10 },
    

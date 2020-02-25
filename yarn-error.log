@@ -1,0 +1,59 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add redux@4.0.0
+
+PATH: 
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files\nodejs\;C:\Users\nobody\.windows-build-tools\python27\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\nobody\AppData\Local\Microsoft\WindowsApps;C:\Users\nobody\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\nobody\.dotnet\tools;C:\Users\nobody\AppData\Local\Yarn\bin;C:\Users\nobody\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Java\jdk-13.0.2\bin;C:\Program Files\heroku\bin;C:\Users\nobody\AppData\Roaming\npm;C:\Users\nobody\AppData\Local\Android\Sdk\platform-tools;
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.9.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\nobody\Documents\PortfoliosWVer\PasswordManVer7\node_modules\hammerjs\src\input'
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "@react-native-community/async-storage": "^1.8.0",
+      "@react-native-community/masked-view": "^0.1.6",
+      "expo": "~36.0.0",
+      "formik": "^2.1.4",
+      "react": "~16.9.0",
+      "react-dom": "~16.9.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+      "react-native-elements": "^1.2.7",
+      "react-native-gesture-handler": "^1.5.0",
+      "react-native-reanimated": "^1.7.0",
+      "react-native-safe-area-context": "^0.6.0",
+      "react-native-screens": "^1.0.0-alpha.23",
+      "react-native-vector-icons": "^6.6.0",
+      "react-native-web": "^0.11.7",
+      "react-navigation": "^4.0.10",
+      "react-navigation-stack": "^2.0.16",
+      "react-navigation-tabs": "^2.5.6"
+    },
+    "devDependencies": {
+      "babel-preset-expo": "~8.0.0",
+      "@babel/core": "^7.0.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
