@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {Text, TextInput, View, Button} from 'react-native';
+import {Text, View, Button} from 'react-native';
+import {Input} from 'react-native-elements'
 
 class EditPassword extends Component {
     constructor(props){
@@ -21,15 +22,15 @@ class EditPassword extends Component {
         return (
             <View>
                 <Text>Title</Text>
-                <TextInput value= {this.state.title} onChangeText={(value)=>this.setState({title:value})} />
+                <Input value= {this.state.title} onChangeText={(value)=>this.setState({title:value})} />
                 <Text>Link</Text>
-                <TextInput value= {this.state.website} onChangeText={(value)=>this.setState({website:value})}  />
+                <Input value= {this.state.website} onChangeText={(value)=>this.setState({website:value})}  />
                 <Text>Username</Text>
-                <TextInput value= {this.state.username} onChangeText={(value)=>this.setState({username:value})} />
+                <Input value= {this.state.username} onChangeText={(value)=>this.setState({username:value})} />
                 <Text>Password</Text>
-                <TextInput secureTextEntry value= {this.state.password} onChangeText={(value)=>this.setState({password:value})} />
+                <Input secureTextEntry value= {this.state.password} onChangeText={(value)=>this.setState({password:value})} />
                 <Text>Notes</Text>
-                <TextInput  value= {this.state.notes} multiline onChangeText={(value)=>this.setState({notes:value})} />
+                <Input  value= {this.state.notes} multiline onChangeText={(value)=>this.setState({notes:value})} />
                 <Button title="Save" onPress={()=>this.handleSave()} />
                 <Button title="Cancle" onPress={()=>this.props.navigation.goBack()}  />
     </View>

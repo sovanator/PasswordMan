@@ -4,6 +4,8 @@ import AppContainer from './Navigation/AppNavigation'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import rootReducer from './Redux/rootReducer'
+
+
 const store = createStore(rootReducer);
 
 

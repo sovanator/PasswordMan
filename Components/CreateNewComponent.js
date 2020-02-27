@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
 import {Text, View, Button, TouchableOpacity} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import {Input} from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Ionicons} from '@expo/vector-icons'
-import { Formik } from 'formik';
+import {connect} from 'react-redux'
+import {addPassword} from '../Redux/ActionCreator'
+
+const mapDispatchToProps = {
+    addPassword: (key, title, username, password, website, notes) =>(addPassword(title, username, password, website, notes))
+}
 
 class NewPassword extends Component {
     constructor(props){
         super(props)
-        this.state={initialValues:{
-                                    title:"",
+        this.state={                title:"",
                                     userName:'',
                                     password:'',
-                                    link:''
-                     },
+                                    link:'',
+                                    key:'',
+                    
                      secureTextEntry: true
         }
     }
@@ -23,51 +28,72 @@ class NewPassword extends Component {
             secureTextEntry: !this.state.secureTextEntry
         })
     }
+
+    handleAddPassword=()=>{
+        this.props.addPassword('21',this.state.title, this.state.username, this.state.password, this.state.link, this.state.notes)
+        
+    }
+    
+    resetForm=()=>{
+        this.setState({title:''
+                        ,userName:'',
+                         password:'',
+                          link:'', 
+                          key:''})
+       
+    }   
+    
+   
     render() { 
-        return (<View>
-                        
-                    <Formik
-                        initialValues = {this.state.initialValues}
-                        onSubmit={values =>{
-                            alert(JSON.stringify(values))
-                        }}>
-                        {formikProps=>(
-                            <>
+        return (
+                    
+                  
+                                    <View>
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Text>Title</Text>
-                                            <TextInput placeholder="Title" 
-                                                        onChangeText={formikProps.handleChange('title')}/>
+                                            <Input placeholder="Title" 
+                                                        value={this.state.title}
+                                                        onChangeText={(title)=>{this.setState({title:title})}}/>
                                         
                                         </View>
 
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Text>Link</Text>
-                                            <TextInput placeholder="Link" 
-                                                        onChangeText={formikProps.handleChange('link')}/>
+                                            <Input  
+                                                        
+                                                        value={this.state.link}
+                                                        placeholder="Link" 
+                                                        onChangeText={(link)=>this.setState({link:link})}/>
                                         </View>
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Text>User Name</Text>
-                                            <TextInput placeholder="User Name" 
-                                                        onChangeText={formikProps.handleChange('userName')}/>
+                                            <Input 
+                                                        
+                                                        value={this.state.userName}
+                                                        placeholder="User Name" 
+                                                        onChangeText={(userName)=>this.setState({userName:userName})}/>
                                         </View>
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Text>Password</Text>
-                                            <TextInput placeholder="Password" 
-                                                        onChangeText={formikProps.handleChange('password')}
+                                            <Input 
+                                                        value={this.state.password}
+                                                        placeholder="Password" 
+                                                        onChangeText={(password)=>this.setState({password:password})}
                                                         secureTextEntry={this.state.secureTextEntry}/>
                                             <TouchableOpacity onPress={this.handleEye}>
                                                  <Icon name="eye" size={30} />
                                             </TouchableOpacity>
                                         </View>
-                                        <Button title="Create" onPress={formikProps.handleSubmit} />
-                                        <Button title="Cancle" color="red" onPress={()=>this.props.navigation.navigate('Saved Password')}/>
-                            </>
+                                        <Button title="Create" onPress={()=>{this.handleAddPassword();
+                                                                             
+                                                                            this.resetForm()}} />
+                                        <Button title="Back" color="red" onPress={()=>this.props.navigation.navigate('Saved Password')}/>
+                        
 
-                        )
-                        }
-                    </Formik>
-                 </View>  );
+                      
+                  </View>
+                    );
     }
 }
  
-export default NewPassword;
+export default connect(null,mapDispatchToProps)(NewPassword);
