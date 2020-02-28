@@ -7,7 +7,7 @@ import {addPassword} from '../Redux/ActionCreator'
 import {store} from '../App'
 
 const mapDispatchToProps = {
-    addPassword: (key, title, username, password, website, notes) =>(addPassword(title, username, password, website, notes))
+    addPassword: (id, title, username, password, website, notes) =>(addPassword(id, title, username, password, website, notes))
 }
 
 class NewPassword extends Component {
@@ -17,7 +17,7 @@ class NewPassword extends Component {
                                     userName:'',
                                     password:'',
                                     link:'',
-                                    key:'',
+                                    key:'10',
                     
                      secureTextEntry: true
         }
@@ -31,13 +31,21 @@ class NewPassword extends Component {
     }
 
     handleAddPassword=()=>{
-        this.props.addPassword('21',this.state.title, this.state.username, this.state.password, this.state.link, this.state.notes)
+        this.props.addPassword(this.state.id,this.state.title, this.state.userName, this.state.password, this.state.link, this.state.notes)
         
     }
+
+    incrementId() {
+        let newId = Number(this.state.key) + 1;
+        newId = String(newId);
+    
+        this.setState({ key: newId });
+        this.incrementId()
+      }
     
     resetForm=()=>{
         this.setState({title:''
-                        ,userName:'',
+                        ,userName:'', 
                          password:'',
                           link:'', 
                           key:''})

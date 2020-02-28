@@ -1,20 +1,6 @@
-import {SAVEDPASSWORD} from '../Data/SavedPassword'
+import PasswordListReducer from './PasswordListReducer';
+import { combineReducers } from 'redux';
 
-const initState = {
-    savedPasswords : SAVEDPASSWORD
-}
-
-const rootReducer = (state= initState, action) =>{
-   switch(action.type){
-       case 'EDIT_PASSWORD':
-           
-       case 'ADD_PASSSWORD':
-            return [...state, action.payload]
-       case 'DELETE_PASSWORD':
-
-       default:
-           return state
-   };
-}
-
-export default rootReducer
+export default combineReducers({
+  passwordList: PasswordListReducer
+});

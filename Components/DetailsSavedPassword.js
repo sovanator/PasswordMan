@@ -13,16 +13,20 @@ const DetailsSaved = ({navigation})=> {
             <Input editable={false} value= {navigation.getParam('website')} editable={false} />
             <Text>Username</Text>
             <Input editable={false} value= {navigation.getParam('username')} editable={false} />
+            {/* <Text>Key</Text>
+            <Input editable={false} value= {navigation.getParam('key')} editable={false} /> */}
             <Text>Password</Text>
             <Input editable={false} secureTextEntry value= {navigation.getParam('password')} editable={false} />
             <Text>Notes</Text>
             <Input editable={false}  value= {navigation.getParam('notes')} multiline editable={false} />
-            <Button title="Edit" onPress={()=>navigation.navigate('Edit Password', {
+            <Button handleSavedPassword ={()=>this.props.handleSavedPassword()} title="Edit" onPress={()=>navigation.navigate('Edit Password', {
                                                                                     title: navigation.getParam('title'),
                                                                                     website: navigation.getParam('website'),
                                                                                     username: navigation.getParam('username'),
                                                                                     password:  navigation.getParam('password'),
-                                                                                    notes: navigation.getParam('notes')
+                                                                                    notes: navigation.getParam('notes'),
+                                                                                    key: navigation.getParam('key')
+                                                                                    // handleSavedPassword: navigation.getParam('handleSavedPassword')
                                                                                      
             })}/>
         </View>

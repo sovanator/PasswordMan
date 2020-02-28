@@ -12,11 +12,12 @@ class SavedPassword extends Component {
      renderList=({item})=> {
         return (
             <ListItem
+                handleSavedPassword = {()=>this.handleSavedPassword()}
                 roundAvatar
                 title={item.title}
                 subtitle={item.website}
                 bottomDivider
-                onPress={()=>this.props.navigation.navigate('Password Details',item)}
+                onPress={()=>this.props.navigation.navigate('Password Details',{ item } )}
                 chevron
             />
 
@@ -81,8 +82,8 @@ const styles= StyleSheet.create({
 //what data you want to grab from redux goes here
 const mapStateToProps = (state)=>{
     return {
-        savedPasswords: state.savedPasswords
+        savedPasswords: state.passwordList
     }
 
 }
-export default connect(mapStateToProps)(SavedPassword);
+export default connect(mapStateToProps, null)(SavedPassword);

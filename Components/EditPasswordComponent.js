@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Text, View, Button} from 'react-native';
 import {Input} from 'react-native-elements'
+import {connect} from 'react-redux'
 
 class EditPassword extends Component {
     constructor(props){
@@ -11,13 +12,16 @@ class EditPassword extends Component {
             username: this.props.navigation.getParam('username'),
             password: this.props.navigation.getParam('password'),
             notes: this.props.navigation.getParam('notes'),
+            key: this.props.navigation.getParam('key')
         }
     }
 
     handleSave =()=>{
-        alert('Saved (not really)!')
-        this.props.navigation.goBack()
+        console.log(this.props.savedPasswords)
+        
+        
     }
+    
     render() { 
         return (
             <View>
@@ -29,16 +33,22 @@ class EditPassword extends Component {
                 <Input value= {this.state.username} onChangeText={(value)=>this.setState({username:value})} />
                 <Text>Password</Text>
                 <Input secureTextEntry value= {this.state.password} onChangeText={(value)=>this.setState({password:value})} />
+                {/* <Text>Key</Text>
+                <Input  value= {this.state.key} onChangeText={(value)=>this.setState({password:key})} /> */}
                 <Text>Notes</Text>
                 <Input  value= {this.state.notes} multiline onChangeText={(value)=>this.setState({notes:value})} />
-                <Button title="Save" onPress={()=>this.handleSave()} />
+                <Button title="Save" 
+                        onPress={()=>this.handleSave()} />
                 <Button title="Cancle" onPress={()=>this.props.navigation.goBack()}  />
     </View>
           );
+        }
     }
-}
- 
-export default EditPassword;
-
-
-
+    
+    
+    const mapStateToProps = (state)=>{
+        return {
+            savedPasswords: state.passwordList
+        }
+    }
+export default connect(mapStateToProps,null)(EditPassword);
