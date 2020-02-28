@@ -5,7 +5,7 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 // import AsyncStorage from '@react-native-community/async-storage';
 
 
-const userInfo = {pin: '1234'}
+const userInfo = {pin: ''}
 
 class Login extends Component {
     constructor(props){

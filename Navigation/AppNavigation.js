@@ -13,27 +13,106 @@ import EditPassword from '../Components/EditPasswordComponent'
 
 
 const AuthStack = createStackNavigator({
-                                        "Sign In": {screen: Login},
+                                        "Sign In": {screen: Login,
+                                            navigationOptions:{
+                                                title: "PasswordMan",
+                                                headerTintColor: "white",
+                                                headerStyle:{
+                                                   backgroundColor:'black',
+                                                           },
+                                               headerTitleAlign: 'center'
+                                                }
+                                            },
                                         "Sign Up": {screen: SignUp}
                                         })
 
 const SavedNavigation = createStackNavigator({
                                         "Saved Password": {screen: SavedPassword,
                                         navigationOptions:{
-                                            title: "Saved Password"
-                                        }},
-                                        "Password Details": {screen: DetailsSaved}
-                                                ,
-                                        "Edit Password": {screen: EditPassword}
+                                            title: "Saved Password",
+                                            headerTintColor: "white",
+                                            headerStyle:{
+                                               backgroundColor:'black',
+                                            
+                                           },
+                                           headerTitleAlign: 'center'
+                                                            }
+                                        },
+                                        "Password Details": {screen: DetailsSaved,
+                                            navigationOptions:{
+                                                title: "Details",
+                                                headerTintColor: "white",
+                                                headerStyle:{
+                                                   backgroundColor:'black',
+                                                
+                                               },
+                                               headerTitleAlign: 'center'
+                                                                }
+                                        },
+                                                
+                                        "Edit Password": {screen: EditPassword,
+                                            navigationOptions:{
+                                                title: "Edit Password",
+                                                headerTintColor: "white",
+                                                headerStyle:{
+                                                   backgroundColor:'black',
+                                                
+                                               },
+                                               headerTitleAlign: 'center'
+                                                                }}
                                                 })
+const NewPasswordNav = createStackNavigator({
+                        "New Password": {screen: NewPassword,
+                            navigationOptions:{
+                                title: "Create New",
+                                headerTintColor: "white",
+                                headerStyle:{
+                                backgroundColor:'black',
+                                        },
+                            headerTitleAlign: 'center'
+                                }}
+                            })
+                         
+
+const GenPasswordNav = createStackNavigator({
+                        "Gen Password": {screen: GeneratePassword,
+                            navigationOptions:{
+                                title: "Generator",
+                                headerTintColor: "white",
+                                headerStyle:{
+                                backgroundColor:'black',
+                                        },
+                            headerTitleAlign: 'center'
+                                }}
+                            })
+                         
+
+
 
 const TabNavigator = createBottomTabNavigator({
     "Saved Password":{screen:SavedNavigation},
-    "New Password":{screen:NewPassword},
-    "Generate Password":{screen:GeneratePassword}
+    "New Password":{screen:NewPasswordNav},
+    "Generate Password":{screen:GenPasswordNav}
     
 
-})
+     },{
+     tabBarOptions:{
+        activeTintColor: "white",      
+        inactiveTintColor: "#858585",  
+        style: {               
+         paddingVertical: 10,        
+         backgroundColor: "black",
+        },      
+        labelStyle: {        
+         fontSize: 15,        
+           
+        },
+       
+     },
+     headerStyle:{
+         backgroundColor: 'black'
+     }
+    })
 
 
 const AppContainer = createAppContainer(

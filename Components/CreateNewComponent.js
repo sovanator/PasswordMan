@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {Text, View, Button, TouchableOpacity} from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import {Text, View, Button, TouchableOpacity, StyleSheet} from 'react-native';
 import {Input} from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons';
 import {connect} from 'react-redux'
 import {addPassword} from '../Redux/ActionCreator'
+import {store} from '../App'
 
 const mapDispatchToProps = {
     addPassword: (key, title, username, password, website, notes) =>(addPassword(title, username, password, website, notes))
@@ -22,6 +22,7 @@ class NewPassword extends Component {
                      secureTextEntry: true
         }
     }
+  
 
     handleEye =()=>{
         this.setState({
@@ -41,14 +42,18 @@ class NewPassword extends Component {
                           link:'', 
                           key:''})
        
-    }   
+    }  
+    
+    returnState =()=>{
+        console.log(store.getState().SAVEDPASSWORD)
+    }
     
    
     render() { 
         return (
                     
                   
-                                    <View>
+                                    <View style={styles.container}>
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Text>Title</Text>
                                             <Input placeholder="Title" 
@@ -87,7 +92,8 @@ class NewPassword extends Component {
                                         <Button title="Create" onPress={()=>{this.handleAddPassword();
                                                                              
                                                                             this.resetForm()}} />
-                                        <Button title="Back" color="red" onPress={()=>this.props.navigation.navigate('Saved Password')}/>
+                                        <Button title="Back" color="red" onPress={()=>this.props.navigation.navigate('Saved Password')
+                                        }/>
                         
 
                       
@@ -97,3 +103,12 @@ class NewPassword extends Component {
 }
  
 export default connect(null,mapDispatchToProps)(NewPassword);
+
+
+const styles = StyleSheet.create({
+    container:{
+    flex:1,
+   
+   
+    }, 
+ })

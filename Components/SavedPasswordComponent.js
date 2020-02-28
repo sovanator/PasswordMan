@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {View, StyleSheet, Button, SafeAreaView, FlatList, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, SafeAreaView, FlatList, Button} from 'react-native';
 import {ListItem} from 'react-native-elements'
 import {connect} from 'react-redux'
 
 class SavedPassword extends Component {
   
     handleSavedPassword = ()=>{
-        console.log('clicked')
+        console.log('clicked clicked')
     }
 
      renderList=({item})=> {
@@ -33,13 +33,12 @@ class SavedPassword extends Component {
                     renderItem = {this.renderList}
                     keyExtractor={item=>item.key}
                 />    
-                <View
-                    style={styles.ButtonStyle}>
+                <View style={styles.ButtonStyle}>
                     <Button
-                            title="+"
+                           title="+"
                             color="black"
-                            onPress={()=>this.props.navigation.navigate('New Password')}
-                    />
+                            onPress={()=>this.props.navigation.navigate('New Password')} />
+                     
                 </View>
             </SafeAreaView>  );
     }
@@ -54,14 +53,27 @@ const styles= StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F5F5F5',
       },
+    //   ButtonStyle: {
+    //     position: 'absolute',
+    //     width: 60,
+    //     height: 50,
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     right: 60,
+    //     bottom: 30,
+    //   },
       ButtonStyle: {
-        position: 'absolute',
-        width: 60,
-        height: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        right: 60,
-        bottom: 30,
+        borderWidth:1,
+        borderColor:'black',
+        alignItems:'center',
+        justifyContent:'center',
+        width:70,
+        position: 'absolute',                                          
+        bottom: 10,                                                    
+        right: 10,
+        height:70,
+        backgroundColor:'black',
+        borderRadius:100,
       },
   
 })
