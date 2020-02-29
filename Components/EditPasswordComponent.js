@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {Text, View, Button} from 'react-native';
 import {Input} from 'react-native-elements'
 import {connect} from 'react-redux'
+import {editPassword} from '../Redux/ActionCreator'
+
 
 class EditPassword extends Component {
     constructor(props){
@@ -17,10 +19,13 @@ class EditPassword extends Component {
     }
 
     handleSave =()=>{
-        console.log(this.props.savedPasswords)
-        
-        
+        let oldItem = this.props.savedPasswords.filter(items=>items.key!=this.state.key)
+        const  newItem =[...oldItem, this.state]
+        oldItem = [] 
+        this.props.editPassword(newItem)
     }
+
+  
     
     render() { 
         return (
@@ -33,12 +38,11 @@ class EditPassword extends Component {
                 <Input value= {this.state.username} onChangeText={(value)=>this.setState({username:value})} />
                 <Text>Password</Text>
                 <Input secureTextEntry value= {this.state.password} onChangeText={(value)=>this.setState({password:value})} />
-                {/* <Text>Key</Text>
-                <Input  value= {this.state.key} onChangeText={(value)=>this.setState({password:key})} /> */}
                 <Text>Notes</Text>
                 <Input  value= {this.state.notes} multiline onChangeText={(value)=>this.setState({notes:value})} />
                 <Button title="Save" 
-                        onPress={()=>this.handleSave()} />
+                        onPress={()=>{this.handleSave();
+                                    this.props.navigation.navigate("Saved Password")}} />
                 <Button title="Cancle" onPress={()=>this.props.navigation.goBack()}  />
     </View>
           );
@@ -51,4 +55,9 @@ class EditPassword extends Component {
             savedPasswords: state.passwordList
         }
     }
-export default connect(mapStateToProps,null)(EditPassword);
+
+    const mapDispatchToProps = {
+        editPassword: (newItems) =>(editPassword(newItems))
+    }
+    
+export default connect(mapStateToProps, mapDispatchToProps)(EditPassword);

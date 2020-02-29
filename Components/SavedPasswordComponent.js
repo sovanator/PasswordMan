@@ -17,7 +17,7 @@ class SavedPassword extends Component {
                 title={item.title}
                 subtitle={item.website}
                 bottomDivider
-                onPress={()=>this.props.navigation.navigate('Password Details',{ item } )}
+                onPress={()=>this.props.navigation.navigate('Password Details', item )}
                 chevron
             />
 

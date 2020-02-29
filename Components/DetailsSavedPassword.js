@@ -1,36 +1,58 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {Text, View, Button} from 'react-native';
 import { Input } from 'react-native-elements';
+import {connect} from 'react-redux'
+import {deletePassword} from '../Redux/ActionCreator'
 
-
-const DetailsSaved = ({navigation})=> {
+   
+ class DetailsSaved extends Component{  
     
+    handleDelete=(key)=>{
+        console.log(key)
+        this.props.deletePassword(key)
+    }
+
+    
+
+    render(){
+        // const key =this.props.navigation.getParam('key')
     return ( 
         <View>
             <Text>Title</Text>
-            <Input editable={false} value= {navigation.getParam('title')} editable={false} />
+            <Input editable={false} value= {this.props.navigation.getParam('title')} editable={false} />
             <Text>Link</Text>
-            <Input editable={false} value= {navigation.getParam('website')} editable={false} />
+            <Input editable={false} value= {this.props.navigation.getParam('website')} editable={false} />
             <Text>Username</Text>
-            <Input editable={false} value= {navigation.getParam('username')} editable={false} />
+            <Input editable={false} value= {this.props.navigation.getParam('username')} editable={false} />
             {/* <Text>Key</Text>
             <Input editable={false} value= {navigation.getParam('key')} editable={false} /> */}
             <Text>Password</Text>
-            <Input editable={false} secureTextEntry value= {navigation.getParam('password')} editable={false} />
+            <Input editable={false} secureTextEntry value= {this.props.navigation.getParam('password')} editable={false} />
             <Text>Notes</Text>
-            <Input editable={false}  value= {navigation.getParam('notes')} multiline editable={false} />
-            <Button handleSavedPassword ={()=>this.props.handleSavedPassword()} title="Edit" onPress={()=>navigation.navigate('Edit Password', {
-                                                                                    title: navigation.getParam('title'),
-                                                                                    website: navigation.getParam('website'),
-                                                                                    username: navigation.getParam('username'),
-                                                                                    password:  navigation.getParam('password'),
-                                                                                    notes: navigation.getParam('notes'),
-                                                                                    key: navigation.getParam('key')
-                                                                                    // handleSavedPassword: navigation.getParam('handleSavedPassword')
+            <Input editable={false}  value= {this.props.navigation.getParam('notes')} multiline editable={false} />
+            <Button handleSavedPassword ={()=>this.props.handleSavedPassword()} title="Edit" onPress={()=>this.props.navigation.navigate('Edit Password', {
+                                                                                    title: this.props.navigation.getParam('title'),
+                                                                                    website: this.props.navigation.getParam('website'),
+                                                                                    username: this.props.navigation.getParam('username'),
+                                                                                    password:  this.props.navigation.getParam('password'),
+                                                                                    notes: this.props.navigation.getParam('notes'),
+                                                                                    key: this.props.navigation.getParam('key')
                                                                                      
             })}/>
+            <Button title="Delete" onPress={()=>this.handleDelete('1')} />
         </View>
      )
+        }
 }
- 
-export default DetailsSaved;
+
+
+const mapDispatchToProps = {
+    deletePassword: (key) =>(deletePassword(key))
+}
+const mapStateToProps = (state)=>{
+    return {
+        savedPasswords: state.passwordList
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(DetailsSaved);

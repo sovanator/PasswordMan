@@ -40,7 +40,6 @@ class NewPassword extends Component {
         newId = String(newId);
     
         this.setState({ key: newId });
-        this.incrementId()
       }
     
     resetForm=()=>{
@@ -98,7 +97,7 @@ class NewPassword extends Component {
                                             </TouchableOpacity>
                                         </View>
                                         <Button title="Create" onPress={()=>{this.handleAddPassword();
-                                                                             
+                                                                             this.props.navigation.navigate('Saved Password')
                                                                             this.resetForm()}} />
                                         <Button title="Back" color="red" onPress={()=>this.props.navigation.navigate('Saved Password')
                                         }/>
