@@ -39,7 +39,7 @@ import {deletePassword} from '../Redux/ActionCreator'
                                                                                     key: this.props.navigation.getParam('key')
                                                                                      
             })}/>
-            <Button title="Delete" onPress={()=>this.handleDelete('1')} />
+            <Button title="Delete" onPress={()=>this.handleDelete(this.props.navigation.getParam('key'))} />
         </View>
      )
         }

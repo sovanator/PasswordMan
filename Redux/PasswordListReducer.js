@@ -12,8 +12,8 @@ export default function(state = initState, action) {
     case 'ADD_PASSWORD':
       return [...state, action.payload];
     case 'DELETE_PASSWORD':
-      return state.filter(key=>key!==action.payload)
-
+      return state.filter(item=>item.key!==action.payload)
+      
     default:
       return state;
   }
