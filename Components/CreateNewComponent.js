@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Text, View, Button, TouchableOpacity, StyleSheet} from 'react-native';
+import { View, Button, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import {Input} from 'react-native-elements'
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import {connect} from 'react-redux'
 import {addPassword} from '../Redux/ActionCreator'
 import {store} from '../App'
@@ -18,15 +18,17 @@ class NewPassword extends Component {
                                     password:'',
                                     link:'',
                                     key:'10',
-                    
-                     secureTextEntry: true
+                                    eyeStatus:'visibility-off',                   
+                                     secureTextEntry: true
         }
     }
   
 
     handleEye =()=>{
+        const eyeChanger = this.state.eyeStatus=='visibility' ? 'visibility-off' : 'visibility';  
         this.setState({
-            secureTextEntry: !this.state.secureTextEntry
+            secureTextEntry: !this.state.secureTextEntry,
+            eyeStatus: eyeChanger
         })
     }
 
@@ -47,7 +49,8 @@ class NewPassword extends Component {
                         ,userName:'', 
                          password:'',
                           link:'', 
-                          key:''})
+                          key:'',
+                        })
        
     }  
     
@@ -60,9 +63,8 @@ class NewPassword extends Component {
         return (
                     
                   
-                                    <View style={styles.container}>
+                                    <KeyboardAvoidingView behavior="padding" style={styles.container}>
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                            <Text>Title</Text>
                                             <Input placeholder="Title" 
                                                         value={this.state.title}
                                                         onChangeText={(title)=>{this.setState({title:title})}}/>
@@ -70,41 +72,50 @@ class NewPassword extends Component {
                                         </View>
 
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                            <Text>Link</Text>
                                             <Input  
                                                         
                                                         value={this.state.link}
                                                         placeholder="Link" 
                                                         onChangeText={(link)=>this.setState({link:link})}/>
                                         </View>
-                                        <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                            <Text>User Name</Text>
+                                        <View  style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Input 
                                                         
                                                         value={this.state.userName}
                                                         placeholder="User Name" 
                                                         onChangeText={(userName)=>this.setState({userName:userName})}/>
                                         </View>
-                                        <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                            <Text>Password</Text>
+                                        <View style={{marginHorizontal: 20}}>
                                             <Input 
                                                         value={this.state.password}
                                                         placeholder="Password" 
                                                         onChangeText={(password)=>this.setState({password:password})}
                                                         secureTextEntry={this.state.secureTextEntry}/>
-                                            <TouchableOpacity onPress={this.handleEye}>
-                                                 <Icon name="eye" size={30} />
-                                            </TouchableOpacity>
+                                         
+                                        <Icon 
+                                            style={{position:"absolute", top: 17, right: 35, fontSize: 20}} 
+                                            name={this.state.eyeStatus}
+                                            onPress={()=>this.handleEye()}
+                                        />
                                         </View>
-                                        <Button title="Create" onPress={()=>{this.handleAddPassword();
-                                                                             this.props.navigation.navigate('Saved Password')
-                                                                            this.resetForm()}} />
-                                        <Button title="Back" color="red" onPress={()=>this.props.navigation.navigate('Saved Password')
-                                        }/>
+
+                                        <View style={styles.buttonContainer} >
+                                            <Button 
+                                                    color='black'
+                                                    title="Create" 
+                                                    onPress={()=>{this.handleAddPassword();
+                                                                                this.props.navigation.navigate('Saved Password')
+                                                                                this.resetForm()}} />
+                                            <Button 
+                                                    title="Saved List"
+                                                    color="grey" 
+                                                    onPress={()=>this.props.navigation.navigate('Saved Password')
+                                            }/>
+                                        </View>
                         
 
                       
-                  </View>
+                  </KeyboardAvoidingView>
                     );
     }
 }
@@ -114,8 +125,18 @@ export default connect(null,mapDispatchToProps)(NewPassword);
 
 const styles = StyleSheet.create({
     container:{
-    flex:1,
-   
-   
-    }, 
+        flex:1,
+            },
+  
+    passwordText:{
+        alignContent:"center"
+    },
+    buttonContainer:{
+        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20
+    },
+    
+
  })

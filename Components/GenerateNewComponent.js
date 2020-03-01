@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {Text, View, Button} from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
-import { Formik } from 'formik';
+import {StyleSheet, View, Button} from 'react-native';
+import {Input} from 'react-native-elements'
 
 class GeneratePassword extends Component {
     constructor(props){
         super(props)
         this.state={ initialValues:{
-            length:'',
+            length:9,
             exclude:'',
            
 
@@ -16,7 +15,8 @@ class GeneratePassword extends Component {
     }
 
     generatePassword = ()=>{
-       const lengthPass = 10;
+       const lengthPass = this.state.initialValues.length;
+       console.log(lengthPass)
 
        const  randomFunc =  {
             lower: this.generateLowerCase,
@@ -64,50 +64,46 @@ class GeneratePassword extends Component {
 
     render() { 
         return (
-                <View style={{marginTop:90}}>
-                    <Formik
-                        initialValues={this.state.initialValues}
-                        onSubmit={values=>{
-                            alert(JSON.stringify(values))
-                        }}>
-                        {
-                            formikProps=>(
-                                <>
+                
+                                <View>
                                     <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                        <Text>Length</Text>
-                                        <TextInput
-                                            placeholder="number"
-                                            onChangeText={formikProps.handleChange('length')}
+                                         <Input placeholder="Length= 9" 
+                                                onChangeText={(value)=>{this.setState({length:value})}}
+                                         />                                         
+                                    </View>
+                                    <View style={{marginHorizontal: 20, marginVertical: 5}}>
+                                         <Input placeholder="Exclude"
+                                                disabled 
+                                         />                                         
+                                    </View>
+                                    <View style={styles.buttonContainer}>   
+
+                                        <Button         
+                                                       
+                                                        color='black'
+                                                        title="Generate" 
+                                                        onPress={()=>{this.generatePassword()}}
                                         />
                                     </View>
                                     <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                        <Text>Exclude</Text>
-                                        <TextInput
-                                            placeholder="Exclusions"
-                                            onChangeText={formikProps.handleChange('exclude')}
-                                        />
+                                         <Input placeholder="Password"
+                                                disabled 
+                                                value={this.state.password}
+                                                
+                                         />                                         
                                     </View>
-                                    <Button title="Generate"
-                                            onPress={()=>this.generatePassword()} />
-                                    <View style={{marginHorizontal: 20, marginVertical: 5}}>
-                                        <Text>{this.state.password}</Text>
-                                        
-                                    </View>
-                                    <Button title='Save'
-                                            onPress={formikProps.handleSubmit} />
-                                    <Button title='Cancel'
-                                            onPress={()=>this.props.navigation.navigate('Saved Password')}/>
-
-                                </>
-                            )
-                        }    
-
-                    </Formik>
-                    
-
-
-                </View> );
+                                </View>
+                                    );
     }
 }
  
 export default GeneratePassword;
+
+const styles = StyleSheet.create({
+    buttonContainer:{
+        flexDirection:'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20
+    }
+})

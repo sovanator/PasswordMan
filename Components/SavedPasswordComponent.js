@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, SafeAreaView, FlatList, Button} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import {ListItem} from 'react-native-elements'
 import {connect} from 'react-redux'
 
@@ -38,7 +39,8 @@ class SavedPassword extends Component {
                     <Button
                            title="+"
                             color="black"
-                            onPress={()=>this.props.navigation.navigate('New Password')} />
+                            onPress={()=>this.props.navigation.navigate('New Password')}
+                            />
                      
                 </View>
             </SafeAreaView>  );
@@ -54,15 +56,7 @@ const styles= StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F5F5F5',
       },
-    //   ButtonStyle: {
-    //     position: 'absolute',
-    //     width: 60,
-    //     height: 50,
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     right: 60,
-    //     bottom: 30,
-    //   },
+ 
       ButtonStyle: {
         borderWidth:1,
         borderColor:'black',

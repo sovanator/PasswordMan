@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet, KeyboardAvoidingView} from 'react-native';
+import {Text, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import {Avatar} from 'react-native-elements'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
-// import AsyncStorage from '@react-native-community/async-storage';
 
 
 const userInfo = {pin: ''}
