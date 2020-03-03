@@ -68,7 +68,7 @@ const styles= StyleSheet.create({
         right: 10,
         height:70,
         backgroundColor:'black',
-        borderRadius:100,
+        borderRadius:100
       },
   
 })

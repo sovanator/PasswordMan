@@ -30,7 +30,7 @@ import {deletePassword} from '../Redux/ActionCreator'
 
     render(){
     return ( 
-        <KeyboardAvoidingView  behavior="padding"  style={styles.container}>
+        <View  style={styles.container}>
             <Text style={styles.textLable}>Title</Text>
             <Input editable={false} value= {this.props.navigation.getParam('title')} editable={false} />
             <Text style={styles.textLable}>Link</Text>
@@ -45,7 +45,7 @@ import {deletePassword} from '../Redux/ActionCreator'
                                             onPress={()=>this.handleEye()}
                                         />
             <Text style={styles.textLable}>Notes</Text>
-            <Input editable={false}  value= {this.props.navigation.getParam('notes')} multiline editable={false} />
+            {/* <Input editable={false}  value= {this.props.navigation.getParam('notes')} multiline editable={false} /> */}
             <View style={styles.buttonContainer} >
             <Button
                     color='black'
@@ -55,7 +55,7 @@ import {deletePassword} from '../Redux/ActionCreator'
                                                                                     website: this.props.navigation.getParam('website'),
                                                                                     username: this.props.navigation.getParam('username'),
                                                                                     password:  this.props.navigation.getParam('password'),
-                                                                                    notes: this.props.navigation.getParam('notes'),
+                                                                                    // notes: this.props.navigation.getParam('notes'),
                                                                                     key: this.props.navigation.getParam('key')
                                                                                      
             })}/>
@@ -66,7 +66,7 @@ import {deletePassword} from '../Redux/ActionCreator'
                      onPress={()=>this.handleDelete(this.props.navigation.getParam('key'))} 
             />
             </View>
-        </KeyboardAvoidingView>
+        </View>
      )
         }
 }

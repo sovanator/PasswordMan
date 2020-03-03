@@ -5,7 +5,7 @@ export const SAVEDPASSWORD =[
         username: 'username1',
         password: 'somepassword1',
         website:'www.somewebsite.com',
-        notes:'Do fugiat pariatur excepteur laborum adipisicing est Lorem occaecat aliquip occaecat.'
+        // notes:'Do fugiat pariatur excepteur laborum adipisicing est Lorem occaecat aliquip occaecat.'
     },                            
     {
         key:"2",
@@ -13,7 +13,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@gmail.com',
         password: 'easypass',
         website:'www.facebook1.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     }      ,                     
     {
         key:"3",
@@ -21,7 +21,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@gmail.com',
         password: 'easypass',
         website:'www.facebook2.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     },                            
     {
         key:"9",
@@ -29,7 +29,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@outlook.com',
         password: 'easypass',
         website:'www.facebook3.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     },                            
     {
         key:"4",
@@ -37,7 +37,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@gmail.com',
         password: 'easypass',
         website:'www.facebook4.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     },                            
     {
         key:"5",
@@ -45,7 +45,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@gmail.com',
         password: 'easypass',
         website:'www.facebook5.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     },                            
     {
         key:"6",
@@ -53,7 +53,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@gmail.com',
         password: 'easypass',
         website:'www.facebook.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     },                            
     {
         key:"8",
@@ -61,7 +61,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@gmail.com',
         password: 'easypass',
         website:'www.facebook.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     },                            
     {
         key:"7",
@@ -69,7 +69,7 @@ export const SAVEDPASSWORD =[
         username: 'facebookUser@gmail.com',
         password: 'easypass',
         website:'www.facebook.com',
-        notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
+        // notes:"Voluptate non qui occaecat esse adipisicing quis occaecat pariatur amet sit'."
     }                            
                                
    

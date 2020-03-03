@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { View, Button, StyleSheet, KeyboardAvoidingView} from 'react-native';
+import { View, Button, StyleSheet, KeyboardAvoidingView, ScrollView} from 'react-native';
 import {Input} from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import {connect} from 'react-redux'
 import {addPassword} from '../Redux/ActionCreator'
 import {store} from '../App'
+import {Header} from 'react-navigation-stack'
+import {Constants} from 'expo'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 
 const mapDispatchToProps = {
     addPassword: (id, title, username, password, website, notes) =>(addPassword(id, title, username, password, website, notes))
@@ -49,7 +53,8 @@ class NewPassword extends Component {
                         ,userName:'', 
                          password:'',
                           link:'', 
-                          key:'',
+                        //   key:'',
+                        //   notes:''
                         })
        
     }  
@@ -63,7 +68,8 @@ class NewPassword extends Component {
         return (
                     
                   
-                                    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+                                    <KeyboardAvoidingView keyboardVerticalOffset={-50} enabled style={styles.container}>
+                                        <View style={{paddingTop: 0}}>
                                         <View style={{marginHorizontal: 20, marginVertical: 5}}>
                                             <Input placeholder="Title" 
                                                         value={this.state.title}
@@ -98,6 +104,14 @@ class NewPassword extends Component {
                                             onPress={()=>this.handleEye()}
                                         />
                                         </View>
+                                        <View  style={{marginHorizontal: 20, marginVertical: 5}}>
+                                            {/* <Input 
+                                                        
+                                                        value={this.state.notes}
+                                                        placeholder="Notes"
+                                                        multiline 
+                                                        onChangeText={(notes)=>this.setState({notes:notes})}/> */}
+                                        </View>
 
                                         <View style={styles.buttonContainer} >
                                             <Button 
@@ -112,10 +126,11 @@ class NewPassword extends Component {
                                                     onPress={()=>this.props.navigation.navigate('Saved Password')
                                             }/>
                                         </View>
+                                </View>
                         
-
-                      
-                  </KeyboardAvoidingView>
+                                            
+                  {/* </KeyboardAwareScrollView> */}
+                    </KeyboardAvoidingView>
                     );
     }
 }

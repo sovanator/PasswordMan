@@ -69,6 +69,7 @@ const NewPasswordNav = createStackNavigator({
                                 headerStyle:{
                                 backgroundColor:'black',
                                         },
+                                // headerTransparent: true,
                             headerTitleAlign: 'center'
                                 }}
                             })

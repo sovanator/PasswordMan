@@ -14,7 +14,7 @@ class EditPassword extends Component {
             website: this.props.navigation.getParam('website'),
             username: this.props.navigation.getParam('username'),
             password: this.props.navigation.getParam('password'),
-            notes: this.props.navigation.getParam('notes'),
+            // notes: this.props.navigation.getParam('notes'),
             key: this.props.navigation.getParam('key'),
         
             eyeStatus:"visibility-off",
@@ -40,7 +40,7 @@ class EditPassword extends Component {
     
     render() { 
         return (
-           <KeyboardAvoidingView  behavior="padding"  style={styles.container}>
+           <KeyboardAvoidingView   style={styles.container}>
                 <Input placeholder="Title"
                         value= {this.state.title} 
                         onChangeText={(value)=>this.setState({title:value})} 
@@ -64,11 +64,11 @@ class EditPassword extends Component {
                                             onPress={()=>this.handleEye()}
                  />
                  </View>
-                <Input placeholder="notes"
+                {/* <Input placeholder="notes"
                        value= {this.state.notes} 
                        multiline 
                        onChangeText={(value)=>this.setState({notes:value})} 
-                />
+                /> */}
                 <View style={styles.buttonContainer}>
                     <Button title="Save" 
                             color="black"

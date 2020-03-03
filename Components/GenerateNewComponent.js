@@ -5,17 +5,16 @@ import {Input} from 'react-native-elements'
 class GeneratePassword extends Component {
     constructor(props){
         super(props)
-        this.state={ initialValues:{
-            length:9,
+        this.state={ 
+            length: 9,
             exclude:'',
-           
-
-        },
-        password:''}
+             password:''
+        }
     }
 
+
     generatePassword = ()=>{
-       const lengthPass = this.state.initialValues.length;
+       const lengthPass = this.state.length;
        console.log(lengthPass)
 
        const  randomFunc =  {
